@@ -196,7 +196,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternGmail = Pattern.compile(Valid_Gmail);
+    public static Pattern patternGmail = Pattern.compile(Constant.Validator.Valid_Gmail);
 
     public static boolean isGmail(String value) {
         Matcher matcher = patternGmail.matcher(value);
@@ -210,7 +210,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternPhone = Pattern.compile(Valis_Phone);
+    public static Pattern patternPhone = Pattern.compile(Constant.Validator.Valid_Phone);
 
     public static boolean isPhone(String value) {
         Matcher matcher = patternPhone.matcher(value);
@@ -224,7 +224,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternCode = Pattern.compile(Valid_Code);
+    public static Pattern patternCode = Pattern.compile(Constant.Validator.Valid_Code);
 
     public static boolean isCode(String value) {
         Matcher matcher = patternCode.matcher(value);
@@ -238,7 +238,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternDate = Pattern.compile(Valid_Date);
+    public static Pattern patternDate = Pattern.compile(Constant.Validator.Valid_Date);
 
     public static boolean isDate(String value) {
         Matcher matcher = patternDate.matcher(value);
@@ -252,7 +252,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternIPv4 = Pattern.compile(Valid_IPv4);
+    public static Pattern patternIPv4 = Pattern.compile(Constant.Validator.Valid_IPv4);
 
     public static boolean isIPv4(String value) {
         Matcher matcher = patternIPv4.matcher(value);
@@ -267,7 +267,7 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static Pattern patternPassword = Pattern.compile(Valid_Password);
+    public static Pattern patternPassword = Pattern.compile(Constant.Validator.Valid_Password);
 
     public static boolean isPassword(String value) {
         Matcher matcher = patternPassword.matcher(value);
@@ -275,7 +275,7 @@ public class Validator {
     }
 
 
-    public static Pattern patternUsername = Pattern.compile(Valid_Username);
+    public static Pattern patternUsername = Pattern.compile(Constant.Validator.Valid_Username);
 
     public static boolean isUsername(String value) {
         Matcher matcher = patternPassword.matcher(value);

@@ -3,6 +3,7 @@ package com.example.app.Model.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,6 @@ public class Province implements Serializable {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "status")
-    private int status;
+//    @Column(name = "status")
+//    private int status;
 }

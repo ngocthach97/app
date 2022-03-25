@@ -8,18 +8,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "typeSchool")
+@Entity(name = "Privilege")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class TypeSchool {
+public class Privilege {
     @Id
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nameType")
-    private String nameTypeSchool;
+    @Column(name = "name")
+    private String namePrivilege;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "status")
-    private String status;
+    private int status;
 }

@@ -4,8 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Data
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class ProvinceDTO {
+    private String provinceCode;
+    private String nameProvince;
 }

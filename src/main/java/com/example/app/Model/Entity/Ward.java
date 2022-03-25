@@ -25,6 +25,6 @@ public class Ward implements Serializable {
     @Column(name = "districtCode")
     private String districtCode;
 
-    @Column(name = "status")
-    private int status;
+//    @Column(name = "status")
+//    private int status;
 }

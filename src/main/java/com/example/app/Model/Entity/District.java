@@ -25,6 +25,6 @@ public class District implements Serializable {
     @Column(name = "provinceCode", length = 50)
     private String provinceCode;
 
-    @Column(name = "status")
-    private int status;
+//    @Column(name = "status")
+//    private int status;
 }
