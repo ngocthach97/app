@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity(name = "district")
 @AllArgsConstructor
@@ -25,6 +26,9 @@ public class District implements Serializable {
     @Column(name = "provinceCode", length = 50)
     private String provinceCode;
 
-//    @Column(name = "status")
-//    private int status;
+    @Column(name = "createDate")
+    private Date createDate;
+
+    @Column(name = "status")
+    private int status;
 }

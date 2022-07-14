@@ -17,7 +17,8 @@ public class UserRepositoryExtImpl implements UserRepositoryExt {
     private EntityManager entityManager;
 
     @Override
-    public List<Users> search(Search search, Pageable pageable) {
+    public List<Users> search(Search search) {
+        Pageable pageable = search.getPageable();
         StringBuilder stringBuilder = new StringBuilder();
         Map<String, Object> map = new HashMap<>();
         stringBuilder.append("SELECT u FROM users u ");

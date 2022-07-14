@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity(name = "nation")
 @AllArgsConstructor
@@ -26,4 +27,7 @@ public class Nation implements Serializable {
 
     @Column(name = "status")
     private int status;
+
+    @Column(name = "createDate")
+    private Date createDate;
 }

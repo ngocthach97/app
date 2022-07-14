@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity(name = "province")
 @AllArgsConstructor
@@ -23,6 +24,9 @@ public class Province implements Serializable {
     @Column(name = "type")
     private String type;
 
-//    @Column(name = "status")
-//    private int status;
+    @Column(name = "status")
+    private int status;
+
+    @Column(name = "createDate")
+    private Date createDate;
 }

@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProvinceRepository extends JpaRepository<Province, String>, ProvinceRepositoryExt {
     Province findByProvinceCode(String provinceCode);
+
+    boolean existsByProvinceCode(String provinceCode);
 }

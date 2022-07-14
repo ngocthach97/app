@@ -1,15 +1,9 @@
 package com.example.app.Service.ServiceImpl;
 
 import com.example.app.Model.DTO.UsersDTO;
-import com.example.app.Model.Entity.District;
-import com.example.app.Model.Entity.Province;
-import com.example.app.Model.Entity.Users;
-import com.example.app.Model.Entity.Ward;
+import com.example.app.Model.Entity.*;
 import com.example.app.Model.Mapper.UserMapper;
-import com.example.app.Repository.Repository.DistrictRepository;
-import com.example.app.Repository.Repository.ProvinceRepository;
-import com.example.app.Repository.Repository.UserRepository;
-import com.example.app.Repository.Repository.WardRepository;
+import com.example.app.Repository.Repository.*;
 import com.example.app.Service.Service.UserService;
 import com.example.app.Utility.Common.Constant;
 import com.example.app.Utility.Common.File;
@@ -33,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -48,6 +43,15 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
 
     public static final String TEMPLATE_PATH = "/file/user_imformation_report.xlsx";
+
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Autowired
+    private NationRepository nationRepository;
+
+    @Autowired
+    private EthnicityRepository ethnicityRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -134,7 +138,7 @@ public class UserServiceImpl implements UserService {
                                 if (!Validator.isPassword(value)) {
 
                                 }
-                                _users.setPassword(value);
+                                _users.setPassword(encoder.encode(value));
                             }
                             break;
                         case 3:
@@ -223,6 +227,35 @@ public class UserServiceImpl implements UserService {
                                 }
                             }
                             break;
+                        case 11:
+                            //Nation Code
+                            if (Validator.isNotNull(value)) {
+                                _users.setNationCode(value);
+                            }
+                            break;
+                        case 12:
+                            //Ethnicity Code
+                            if (Validator.isNotNull(value)) {
+                                Nation nation = nationRepository.findByNationCode(value);
+                                if (Validator.isNull(nation)) {
+
+                                } else {
+                                    _users.setEthnicityCode(value);
+                                }
+                            }
+                            break;
+
+                        case 13:
+                            //Ethnicity Code
+                            if (Validator.isNotNull(value)) {
+                                Ethnicity ethnicity = ethnicityRepository.findByEthnicityCode(value);
+                                if (Validator.isNull(ethnicity)) {
+
+                                } else {
+                                    _users.setEthnicityCode(value);
+                                }
+                            }
+                            break;
                         default:
                             break;
                     }
@@ -263,79 +296,79 @@ public class UserServiceImpl implements UserService {
                 response.flushBuffer();
             }
         } catch (IOException e) {
-           LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
     }
 
     @Override
     public UsersDTO createUser(Users users) {
 
-        if(Validator.isNull(users.getId())){
-            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_ID,EntityName.USER,ErrorKey.ERROR_INVALID_ID);
+        if (Validator.isNull(users.getId())) {
+            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_ID, EntityName.USER, ErrorKey.ERROR_INVALID_ID);
         }
-        if(Validator.isNull(users.getName())){
-            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_NAME,EntityName.USER,ErrorKey.ERROR_INVALID_NAME);
+        if (Validator.isNull(users.getName())) {
+            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_NAME, EntityName.USER, ErrorKey.ERROR_INVALID_NAME);
         }
-        if(Validator.isNull(users.getGender())){
-            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_NAME,EntityName.USER,ErrorKey.ERROR_INVALID_NAME);
+        if (Validator.isNull(users.getGender())) {
+            throw new BadRequestAlertException(LabelKey.USER.LABEL_USER_NAME, EntityName.USER, ErrorKey.ERROR_INVALID_NAME);
         }
-        if(Validator.isNull(users.getPhone())){
+        if (Validator.isNull(users.getPhone())) {
 
         }
-        if(! Validator.isPhone(users.getPhone())){
+        if (!Validator.isPhone(users.getPhone())) {
 
         }
-        if(! userRepository.existsByPhone(users.getPhone())){
+        if (!userRepository.existsByPhone(users.getPhone())) {
 
         }
-        if(Validator.isNull(users.getGmail())){
+        if (Validator.isNull(users.getGmail())) {
 
         }
-        if(! Validator.isGmail(users.getGmail())){
+        if (!Validator.isGmail(users.getGmail())) {
 
         }
-        if(userRepository.existsByGmail(users.getGmail())){
+        if (userRepository.existsByGmail(users.getGmail())) {
 
 
         }
 
-        if(Validator.isNull(users.getPassword())){
+        if (Validator.isNull(users.getPassword())) {
 
         }
-        if(users.getPassword().length() > ValidationProperties.passwordMaxLength ||
-                users.getPassword().length() < ValidationProperties.passwordMinLength){
+        if (users.getPassword().length() > ValidationProperties.passwordMaxLength ||
+                users.getPassword().length() < ValidationProperties.passwordMinLength) {
 
         }
-        if(Validator.isNull(users.getUsername())){
+        if (Validator.isNull(users.getUsername())) {
 
         }
-        if(! Validator.isUsername(users.getUsername())){
+        if (!Validator.isUsername(users.getUsername())) {
 
         }
-        if(Validator.isNull(users.getProvinceCode())){
+        if (Validator.isNull(users.getProvinceCode())) {
 
         }
 
         Province province = provinceRepository.findByProvinceCode(users.getProvinceCode());
-        if(Validator.isNull(province.getProvinceCode())){
+        if (Validator.isNull(province.getProvinceCode())) {
 
         }
 
-        if(Validator.isNull(users.getDistrictCode())){
+        if (Validator.isNull(users.getDistrictCode())) {
 
         }
 
         District district = districtRepository.findByDistrictCode(users.getProvinceCode());
-        if(Validator.isNull(district.getDistrictCode())){
+        if (Validator.isNull(district.getDistrictCode())) {
 
         }
 
-        if(Validator.isNull(users.getWardCode())){
+        if (Validator.isNull(users.getWardCode())) {
 
 
         }
         Ward ward = wardRepository.findByWardCode(users.getWardCode());
-        if(Validator.isNull(ward.getWardCode())){
+        if (Validator.isNull(ward.getWardCode())) {
 
         }
 

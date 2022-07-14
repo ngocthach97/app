@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 @Component
-public interface ProvinceMapper extends com.example.app.Model.Utility.Mapper<Province, ProvinceDTO>{
+public interface ProvinceMapper extends com.example.app.Model.Utility.Mapper<Province, ProvinceDTO> {
 }

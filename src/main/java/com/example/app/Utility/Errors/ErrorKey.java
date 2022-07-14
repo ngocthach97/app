@@ -2,7 +2,7 @@ package com.example.app.Utility.Errors;
 
 import java.net.URI;
 
-public final  class ErrorKey {
+public final class ErrorKey {
 
     public static final String _PROBLEM_BASE_URL = "http://localhost:8001/problem";
     public static final URI DEFAULT_TYPE = URI.create(_PROBLEM_BASE_URL + "/problem-with-message");

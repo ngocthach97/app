@@ -1,11 +1,13 @@
 package com.example.app.Utility.Errors;
 
 import org.zalando.problem.AbstractThrowableProblem;
+
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.zalando.problem.Status;
+
 public class BadRequestAlertException extends AbstractThrowableProblem {
 
     private static final long serialVersionUID = 1L;

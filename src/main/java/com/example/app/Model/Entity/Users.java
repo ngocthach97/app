@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity(name = "users")
@@ -38,6 +39,9 @@ public class Users implements Serializable {
     @Column(name = "gmail", nullable = false)
     private String gmail;
 
+    @Column(name = "DoB", nullable = false)
+    private Date dob;
+
     @Column(name = "roles", nullable = false)
     private String roles;
 
@@ -56,7 +60,6 @@ public class Users implements Serializable {
     @Column(name = "wardCode", nullable = false)
     private String wardCode;
 
-
     @ManyToMany
     @JoinTable(
             name = "user_role",
@@ -64,6 +67,11 @@ public class Users implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     private List<Role> list = new ArrayList<>();
 
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "dateExpiry")
+    private Date dateExpiry;
 
     @Column(name = "status")
     private int status;

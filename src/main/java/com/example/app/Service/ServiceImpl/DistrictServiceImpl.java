@@ -14,6 +14,7 @@ import java.util.List;
 public class DistrictServiceImpl implements DistrictService {
     @Autowired
     private DistrictRepository districtRepository;
+
     @Override
     public List<District> getAllDistrict() {
         return districtRepository.search();

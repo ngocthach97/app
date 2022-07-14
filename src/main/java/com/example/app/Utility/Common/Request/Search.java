@@ -9,12 +9,11 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Search implements Serializable {
+public class Search extends Page implements Serializable {
 
-    private  Long provinceCode;
+    private Long provinceCode;
 
-    private  Long districtCode;
+    private Long districtCode;
 
-    private  Long wardCode;
-
+    private Long wardCode;
 }

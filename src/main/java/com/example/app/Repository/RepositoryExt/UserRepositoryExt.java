@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface UserRepositoryExt {
-    public List<Users> search(Search search, Pageable pageable);
+    public List<Users> search(Search search);
 }

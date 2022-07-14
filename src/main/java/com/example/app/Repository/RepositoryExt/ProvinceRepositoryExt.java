@@ -1,10 +1,10 @@
 package com.example.app.Repository.RepositoryExt;
 
-import com.example.app.Model.Entity.District;
-import com.example.app.Model.Entity.Province;
+import com.example.app.Model.DTO.ProvinceDTO;
+import com.example.app.Utility.Common.Request.Page;
 
 import java.util.List;
 
 public interface ProvinceRepositoryExt {
-    public List<Province> search();
+    List<ProvinceDTO> searchProvincePaging(Page page);
 }

@@ -11,11 +11,10 @@ public class File {
         String content;
         switch (cell.getCellType()) {
             case 0:
-                if(DateUtil.isCellDateFormatted(cell)){
+                if (DateUtil.isCellDateFormatted(cell)) {
                     content = cell.getDateCellValue().toString();
-                }
-                else {
-                    content =  new BigDecimal(cell.getNumericCellValue()).toString();
+                } else {
+                    content = new BigDecimal(cell.getNumericCellValue()).toString();
                 }
                 break;
             case 1:
@@ -34,13 +33,13 @@ public class File {
     }
 
     public boolean checkIfRowIsEmpty(Row row) {
-        if(row == null || row.getLastCellNum() <= 0){
+        if (row == null || row.getLastCellNum() <= 0) {
             return true;
         }
-        for (int cellNum = row.getFirstCellNum() ; cellNum < row.getLastCellNum() ;cellNum ++ ){
+        for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
             Cell cell = row.getCell(cellNum);
-            if (cell != null){
-                return  false;
+            if (cell != null) {
+                return false;
             }
         }
         return true;

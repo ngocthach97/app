@@ -13,6 +13,7 @@ public class LoginResponse {
     private Long id;
     private String username;
     private String roles;
+
     public LoginResponse(String accessToken, Long id, String username, String roles) {
         this.token = accessToken;
         this.id = id;

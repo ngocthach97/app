@@ -122,12 +122,44 @@ public class Validator {
      * Param :value
      * Returns :boolean
      */
-    public static boolean isNull(String value) {
-        if (value.trim() == null) {
+    public static boolean isNull(String s) {
+        if (s == null) {
             return true;
-        } else {
-            return false;
         }
+
+        int counter = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == CharPool.SPACE) {
+                continue;
+            } else if (counter > 3) {
+                return false;
+            }
+
+            if (counter == 0) {
+                if (c != CharPool.LOWER_CASE_N) {
+                    return false;
+                }
+            } else if (counter == 1) {
+                if (c != CharPool.LOWER_CASE_U) {
+                    return false;
+                }
+            } else if ((counter == 2) || (counter == 3)) {
+                if (c != CharPool.LOWER_CASE_L) {
+                    return false;
+                }
+            }
+
+            counter++;
+        }
+
+        if ((counter == 0) || (counter == 4)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
