@@ -8,27 +8,27 @@ import java.math.BigDecimal;
 
 public class File {
     public String readCellContent(Cell cell) {
-        String content;
-        switch (cell.getCellType()) {
-            case 0:
-                if (DateUtil.isCellDateFormatted(cell)) {
-                    content = cell.getDateCellValue().toString();
-                } else {
-                    content = new BigDecimal(cell.getNumericCellValue()).toString();
-                }
-                break;
-            case 1:
-                content = cell.getStringCellValue();
-                break;
-            case 2:
-                content = cell.getCellFormula() + "";
-                break;
-            case 4:
-                content = cell.getBooleanCellValue() + "";
-                break;
-            default:
-                content = "";
-        }
+        String content = null;
+//        switch (cell.getCellType()) {
+//            case 0:
+//                if (DateUtil.isCellDateFormatted(cell)) {
+//                    content = cell.getDateCellValue().toString();
+//                } else {
+//                    content = new BigDecimal(cell.getNumericCellValue()).toString();
+//                }
+//                break;
+//            case 1:
+//                content = cell.getStringCellValue();
+//                break;
+//            case 2:
+//                content = cell.getCellFormula() + "";
+//                break;
+//            case 4:
+//                content = cell.getBooleanCellValue() + "";
+//                break;
+//            default:
+//                content = "";
+//        }
         return content;
     }
 
